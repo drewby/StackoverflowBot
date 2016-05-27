@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Microsoft.Bot.Connector;
-using Microsoft.Bot.Connector.Utilities;
+//using Microsoft.Bot.Connector.Utilities;
+using Microsoft.Bot.Builder.Dialogs;
 using Newtonsoft.Json;
 
 namespace StackoverflowBot
@@ -22,11 +23,8 @@ namespace StackoverflowBot
         {
             if (message.Type == "Message")
             {
-                // calculate something for us to return
-                int length = (message.Text ?? string.Empty).Length;
+                return await Conversation.SendAsync(message, () => new EchoDialog());
 
-                // return our reply to the user
-                return message.CreateReplyMessage($"You sent {length} characters");
             }
             else
             {
