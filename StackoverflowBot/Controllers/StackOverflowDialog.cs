@@ -4,7 +4,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
 namespace StackoverflowBot
-{k
+{
     [Serializable]
     public class StackOverflowDialog : IDialog<object>
     {
