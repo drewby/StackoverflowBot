@@ -9,8 +9,9 @@ using Microsoft.Bot.Connector;
 //using Microsoft.Bot.Connector.Utilities;
 using Microsoft.Bot.Builder.Dialogs;
 using Newtonsoft.Json;
+using StackoverflowBot.Dialogs;
 
-namespace StackoverflowBot
+namespace StackoverflowBot.Controllers
 {
     [BotAuthentication]
     public class MessagesController : ApiController
@@ -23,7 +24,7 @@ namespace StackoverflowBot
         {
             if (message.Type == "Message")
             {
-                return await Conversation.SendAsync(message, () => new EchoDialog());
+                return await Conversation.SendAsync(message, () => new StackOverflowDialog());
 
             }
             else
@@ -47,6 +48,9 @@ namespace StackoverflowBot
             }
             else if (message.Type == "BotAddedToConversation")
             {
+                Message reply = message.CreateReplyMessage("Hello, I am the Ask Stack Overflow Bot, created as a sample by Drew Robbins.");
+                reply.Type = "Hello";
+                return reply;
             }
             else if (message.Type == "BotRemovedFromConversation")
             {
