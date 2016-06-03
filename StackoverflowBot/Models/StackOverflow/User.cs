@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StackoverflowBot.Models
+namespace StackoverflowBot.Models.StackOverflow
 {
     [JsonObject]
     public class User

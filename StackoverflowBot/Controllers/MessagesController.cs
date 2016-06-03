@@ -24,7 +24,7 @@ namespace StackoverflowBot.Controllers
         {
             if (message.Type == "Message")
             {
-                return await Conversation.SendAsync(message, () => new StackOverflowDialog());
+                return await Conversation.SendAsync(message, () => new BingStackOverflowDialog());
 
             }
             else

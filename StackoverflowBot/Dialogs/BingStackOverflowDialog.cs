@@ -13,7 +13,7 @@ using StackoverflowBot.Services;
 namespace StackoverflowBot.Dialogs
 {
     [Serializable]
-    public class StackOverflowDialog 
+    public class BingStackOverflowDialog : IDialog<object>
     {
         
         public async Task StartAsync(IDialogContext context)
@@ -23,19 +23,17 @@ namespace StackoverflowBot.Dialogs
 
         public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<Message> argument)
         {
-
-
             var message = await argument;
             await context.PostAsync("I am looking for an answer to: " + message.Text);
 
-            var service = new StackOverflowService();
+            var service = new BingStackOverflowService();
             var searchResult = await service.ExecuteSearch(message.Text);
 
-            if (searchResult.Items != null && searchResult.Items.Length>0)
+            if (searchResult != null && searchResult.Count>0)
             {
-                await context.PostAsync("I found " + searchResult.Items.Length + " answers. Here is the first: ");
-                await context.PostAsync(searchResult.Items[0].title);
-                await context.PostAsync("More info: " + searchResult.Items[0].link);
+                await context.PostAsync("I found " + searchResult.Count + " answers. Here is the first: ");
+                await context.PostAsync(searchResult[0].Description);
+                await context.PostAsync("More info: " + searchResult[0].Url);
             }
             else
             {

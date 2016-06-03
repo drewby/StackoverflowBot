@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace StackoverflowBot.Models
+namespace StackoverflowBot.Models.StackOverflow
 {
     [JsonObject]
     public class SearchResult

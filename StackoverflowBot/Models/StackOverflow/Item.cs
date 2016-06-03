@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace StackoverflowBot.Models
+namespace StackoverflowBot.Models.StackOverflow
 {
     [JsonObject]
     public class Item
