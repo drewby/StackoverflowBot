@@ -3,6 +3,7 @@ using StackoverflowBot.Models;
 using StackoverflowBot.Models.Bing;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -20,7 +21,8 @@ namespace StackoverflowBot.Services
         {
             get
             {
-                return "428cbed90a2244568c7af63264120de0";
+                var apiKey = ConfigurationManager.AppSettings["BingApiKey"];
+                return apiKey;
             }
         }
 
